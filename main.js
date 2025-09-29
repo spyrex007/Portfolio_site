@@ -252,9 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     animateActiveIcons();
 
-    // Tab switching logic
+    // Tab ripple + switching logic
     tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
+        // Ripple on click
+        btn.addEventListener('click', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            btn.style.setProperty('--x', x + 'px');
+            btn.style.setProperty('--y', y + 'px');
+            btn.classList.remove('rippling');
+            // Force reflow to restart animation
+            // eslint-disable-next-line no-unused-expressions
+            btn.offsetHeight;
+            btn.classList.add('rippling');
+
             const target = btn.getAttribute('data-tab');
 
             // Update active state on buttons

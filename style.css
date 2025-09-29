@@ -233,18 +233,67 @@ body, html {
   cursor: pointer;
   font-weight: 700;
   letter-spacing: 0.02em;
-  transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
   box-shadow: 0 6px 16px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+  position: relative;
+  overflow: hidden;
 }
 .tab-btn:hover {
   background: rgba(24,24,24,0.95);
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.14);
+  text-shadow: 0 0 8px rgba(255,255,255,0.25), 0 0 18px rgba(0, 170, 255, 0.4);
 }
 .tab-btn.active {
   background: #0f0f10;
   color: #ffffff;
   box-shadow: 0 12px 28px rgba(0,0,0,0.55), 0 0 0 2px rgba(255,255,255,0.08);
+}
+
+/* Sheen (shiny swipe) on hover */
+.tab-btn::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -150%;
+  width: 120%;
+  height: 300%;
+  background: linear-gradient(60deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  transform: skewX(-20deg);
+  transition: transform 0.5s ease, left 0.5s ease, top 0.5s ease;
+  pointer-events: none;
+}
+.tab-btn:hover::before {
+  left: 150%;
+}
+
+/* Ripple on click (position via CSS vars --x/--y) */
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 200, 255, 0.35) 0%, rgba(0, 200, 255, 0.25) 30%, rgba(0,0,0,0) 60%);
+  opacity: 0;
+  pointer-events: none;
+}
+.tab-btn.rippling::after {
+  animation: tabRipple 600ms ease-out forwards;
+}
+
+@keyframes tabRipple {
+  0% { opacity: 0.45; width: 0; height: 0; }
+  100% { opacity: 0; width: 260px; height: 260px; }
+}
+
+/* Funky press animation */
+.tab-btn:active {
+  transform: translateY(1px) scale(0.98) rotate(-1deg);
 }
 
 /* Icons containers for tabs */
