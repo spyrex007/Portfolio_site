@@ -212,169 +212,53 @@ body, html {
   min-width: 0;
   background: transparent;
   padding-left: 0;
-}
-@media screen and (max-width: 768px) {
-  .models {
-    justify-content: flex-start;
-    padding-left: 0;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .models {
-    justify-content: flex-start;
-    width: 100%;
-    padding-left: 0;
-  }
+  order: 1; /* ensure models area sits to the right of tabs */
 }
 
-@media screen and (max-width: 768px) {
-  .models {
-    justify-content: center;
-    padding-left: 0;
-    width: 100%;
-  }
+/* Tabs on taskbar */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-left: 0;
+  margin-right: auto; /* keep them pinned to the left */
+  order: 0;
 }
 
-@media screen and (max-width: 480px) {
-  .models {
-    justify-content: center;
-    width: 100%;
-    padding-left: 0;
-  }
-}
-
-.modal-content {
-  background-color: rgba(255, 255, 255, 0.95);
+.tab-btn {
+  background: rgba(18,18,18,0.88);
+  color: #eaeaea;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 14px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: none;
-  overflow: hidden;
-}
-
-.modal-header {
-  background: linear-gradient(135deg, #3970b8 0%, #2f6ab8 100%);
-  color: white;
-  border-bottom: none;
-  padding: 15px 20px;
-}
-
-.modal-body {
-  padding: 20px;
-}
-
-.modal-title {
-  font-weight: 600;
-}
-
-.close {
-  color: white;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.close:hover {
-  color: white;
-  opacity: 1;
-}
-
-.start-menu {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  width: 300px;
-  background-color: rgba(30, 30, 30, 0.95);
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  display: none;
-  z-index: 1000;
-  overflow: hidden;
-  transform-origin: bottom left;
-}
-
-.start-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.start-menu-item {
-  padding: 15px 20px;
-  color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+.tab-btn:hover {
+  background: rgba(24,24,24,0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,255,255,0.06);
+}
+.tab-btn.active {
+  background: #0f0f10;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.55), 0 0 0 2px rgba(255,255,255,0.08);
 }
 
-.start-menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.start-menu-item {
-  position: relative;
-}
-
-.start-menu-item .start-menu-description {
-  display: none;
+/* Icons containers for tabs */
+.icons-container {
   position: absolute;
-  left: 100%;
   top: 0;
-  background-color: rgba(40, 40, 40, 0.95);
-  color: white;
-  padding: 12px 15px;
-  border-radius: 0 5px 5px 0;
-  width: 250px;
-  font-size: 14px;
-  z-index: 10;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-left: 2px solid #3970b8;
-  cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s;
-  opacity: 0;
-  pointer-events: none;
+  left: 0;
+  right: 0;
+  bottom: 48px; /* leave space for taskbar */
+  display: none;
 }
-
-.start-menu-item.active .start-menu-description {
-  display: block;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-.start-menu-description:hover {
-  background-color: rgba(60, 60, 60, 0.95);
-}
-
-/* Show description when hovering over menu item */
-.start-menu-item:hover .start-menu-description {
+.icons-container.active {
   display: block;
 }
-
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.scale-in {
-  animation: scaleIn 0.5s ease forwards;
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* --- Responsive layout for tablets and below --- */
 @media screen and (max-width: 768px) {
   body, html {
     overflow-x: hidden;
@@ -387,6 +271,19 @@ body, html {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+  }
+
+  .icons-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    display: none;
+    padding-bottom: 56px; /* space for taskbar */
+  }
+  .icons-container.active {
+    display: block;
   }
 
   .icon {

@@ -9,37 +9,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalBody = $('#modalBody');
     const startButton = $('#startButton');
     const startMenu = $('#startMenu');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const iconContainers = document.querySelectorAll('.icons-container');
 
-    // Setup initial random positions for icons
-    function setupIcons() {
-        const containerWidth = window.innerWidth - 100; 
-        const containerHeight = window.innerHeight - 100; 
+    // Setup initial random positions for icons (only for active tab)
+    function layoutActiveIcons() {
+        const activeContainer = document.querySelector('.icons-container.active');
+        if (!activeContainer) return;
 
-        icons.forEach(icon => {
-            const iconWidth = icon.offsetWidth;
-            const iconHeight = icon.offsetHeight;
-    
+        const activeIcons = activeContainer.querySelectorAll('.icon');
+        const padding = 100;
+        const containerWidth = window.innerWidth - padding; 
+        const containerHeight = window.innerHeight - (padding + 60); // 60 for taskbar/header spacing
+
+        activeIcons.forEach(icon => {
+            const iconWidth = icon.offsetWidth || 120;
+            const iconHeight = icon.offsetHeight || 120;
+
             let randomX, randomY;
             let isPositionValid = false;
-    
-            while (!isPositionValid) {
-                randomX = Math.floor(Math.random() * (containerWidth - iconWidth));
-                randomY = Math.floor(Math.random() * (containerHeight - iconHeight));
-    
+
+            let guard = 0;
+            while (!isPositionValid && guard < 200) {
+                randomX = Math.floor(Math.random() * Math.max(1, (containerWidth - iconWidth)));
+                randomY = Math.floor(Math.random() * Math.max(1, (containerHeight - iconHeight)));
+
                 if (randomX >= 0 && randomY >= 0 &&
                     randomX + iconWidth <= containerWidth &&
                     randomY + iconHeight <= containerHeight) {
                     isPositionValid = true;
                 }
+                guard++;
             }
-    
+
             icon.style.position = 'absolute';
             icon.style.left = `${randomX}px`;
             icon.style.top = `${randomY}px`;
         });
     }
 
-    setupIcons();
+    layoutActiveIcons();
+    window.addEventListener('resize', () => {
+        layoutActiveIcons();
+    });
 
     // Initialize interact.js draggable
     interact('.icon').draggable({
@@ -139,6 +151,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.find('.modal-title').text('UP WAY GAME')
                modalBody.html('<p><a href="https://naved90.itch.io/up-way">Play UP WAY on itch.io</a><br><img src="Assets/gameDemo.gif"  style="width:100%; height:auto;"/>');                            
               break;
+            case 'ProPlaceholder1':
+                modal.find('.modal-title').text('Enterprise Dashboard (Placeholder)');
+                modalBody.html('<p>A sleek enterprise-grade analytics dashboard with role-based access, blazing-fast APIs, and responsive charts. Demo coming soon.</p>');
+                break;
+            case 'ProPlaceholder2':
+                modal.find('.modal-title').text('ML Pipeline (Placeholder)');
+                modalBody.html('<p>End-to-end ML pipeline with feature store, model registry, CI/CD, and real-time inference. Case study incoming.</p>');
+                break;
+            case 'ProPlaceholder3':
+                modal.find('.modal-title').text('Cloud Infra (Placeholder)');
+                modalBody.html('<p>Scalable cloud infrastructure on Kubernetes with IaC, observability, and zero-downtime deploys. Details soon.</p>');
+                break;
             default:
                 modalBody.html(`<p>Project not found.</p>`);
         }
@@ -214,14 +238,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Add entrance animation for icons
-    anime({
-        targets: '.icon',
-        scale: [0, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(100),
-        easing: 'easeOutElastic(1, .5)',
-        duration: 800
+    // Add entrance animation for icons in active tab
+    function animateActiveIcons() {
+        const active = document.querySelector('.icons-container.active .icon');
+        anime({
+            targets: '.icons-container.active .icon',
+            scale: [0, 1],
+            opacity: [0, 1],
+            delay: anime.stagger(100),
+            easing: 'easeOutElastic(1, .5)',
+            duration: 800
+        });
+    }
+    animateActiveIcons();
+
+    // Tab switching logic
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            // Update active state on buttons
+            tabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update active state on containers
+            iconContainers.forEach(c => {
+                if (c.getAttribute('data-tab') === target) {
+                    c.classList.add('active');
+                } else {
+                    c.classList.remove('active');
+                }
+            });
+
+            // Layout and animate icons for the newly active tab
+            layoutActiveIcons();
+            animateActiveIcons();
+        });
     });
 });
 
