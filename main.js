@@ -170,6 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.find('.modal-title').text('DebateDash');
                 modalBody.html('<p>DebateDash is a social media and gamified platform that allows realtime debates challenges as well as social media like discussions between users, it has a currency system as well as profiles <a href="https://debatedash3.vercel.app/">Click here to check it out</a></p><br><img src="Assets/debatedash.gif" style="width:100%; height:auto;"><br><img src="Assets/debatedash1.gif" style="width:100%; height:auto;">');
                 break;
+            case 'googleSignIn':
+                modal.find('.modal-title').text('Google Sign-in Authentication');
+                modalBody.html('<p>Mobile app Authentication with Sign-in with google in react native and supabase</p><br><img src="Assets/auth.png" style="width:100%; height:auto;">');
+                break;
             default:
                 modalBody.html(`<p>Project not found.</p>`);
         }
