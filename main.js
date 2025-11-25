@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  
     if (isMobile) {
-      alert('For mobile please switch to "Desktop mode" in your browser settings.'.toUpperCase());
+        window.location.replace('home.html');
+        return;
     }
     const icons = document.querySelectorAll('.icon');
     const modal = $('#projectModal');

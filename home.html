@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naved — Portfolio</title>
+  <meta name="description" content="Portfolio of Naved: AI chatbots, web apps, simulations, and .NET backend work." />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="#top">Naved</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-primary">Hire Me</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title">I build AI‑powered web apps, interactive simulations, and reliable backends.</h1>
+          <p class="hero__subtitle">Full‑stack developer experienced with Next.js, Supabase, Angular, ASP.NET Core, SQL Server, and p5.js. I help founders and teams ship fast, practical products.</p>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn-primary">See Featured Work</a>
+            <a href="mailto:snaved159@gmail.com" class="btn btn-ghost">Work With Me</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <img src="Assets/icon.jpg" alt="Naved avatar" loading="lazy" />
+        </div>
+      </div>
+      <div class="hero__bg" aria-hidden="true"></div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section__title">Featured Projects</h2>
+        <p class="section__lead">A selection of work that highlights problem‑solving, execution speed, and quality.</p>
+        <div class="projects-grid">
+          <article class="card project">
+            <img src="Assets/Fluid.png" alt="2D Fluid Solver visualization" class="project__img" loading="lazy" />
+            <div class="project__body">
+              <h3 class="project__title">2D Fluid Solver</h3>
+              <ul class="project__bullets">
+                <li><strong>Problem:</strong> Real‑time visualization of incompressible fluid dynamics.</li>
+                <li><strong>What I did:</strong> Implemented solver in C++ and built a demo viewer.</li>
+                <li><strong>Stack:</strong> C++, basic linear algebra, rendering for visualization.</li>
+                <li><strong>Outcome:</strong> Stable and smooth visuals with adjustable parameters.</li>
+              </ul>
+              <div class="project__links">
+                <a class="btn btn-sm" href="https://www.youtube.com/watch?v=9BaUaAe4TmI" target="_blank" rel="noopener">Video</a>
+                <a class="btn btn-sm btn-ghost" href="https://github.com/spyrex69/2D-Fluid-Solver/blob/main/Fluidsim2D.cpp" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <img src="Assets/debatedash.gif" alt="DebateDash demo" class="project__img" loading="lazy" />
+            <div class="project__body">
+              <h3 class="project__title">DebateDash</h3>
+              <ul class="project__bullets">
+                <li><strong>Problem:</strong> Enable real‑time debate, challenges, and social reactions.</li>
+                <li><strong>What I did:</strong> Built a responsive app with user profiles and currency.</li>
+                <li><strong>Stack:</strong> Modern web stack (SPA), real‑time features, UI/UX design.</li>
+                <li><strong>Outcome:</strong> Engaging interactions and seamless debate workflows.</li>
+              </ul>
+              <div class="project__links">
+                <a class="btn btn-sm" href="https://debatedash3.vercel.app/" target="_blank" rel="noopener">Live</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <img src="Assets/givegigs.png" alt="GiveGigs moderation dashboard" class="project__img" loading="lazy" />
+            <div class="project__body">
+              <h3 class="project__title">GiveGigs Moderation</h3>
+              <ul class="project__bullets">
+                <li><strong>Problem:</strong> Role‑based moderation for a freelance marketplace.</li>
+                <li><strong>What I did:</strong> Built dashboards, fixed auth, and added profile pages.</li>
+                <li><strong>Stack:</strong> Next.js, Supabase, auth and role management.</li>
+                <li><strong>Outcome:</strong> Clear review flows and secure access controls.</li>
+              </ul>
+              <div class="project__links">
+                <a class="btn btn-sm" href="https://givegigs.vercel.app" target="_blank" rel="noopener">Live</a>
+                <a class="btn btn-sm btn-ghost" href="#" aria-disabled="true">Case study soon</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <img src="Assets/Game.png" alt="UP WAY game art" class="project__img" loading="lazy" />
+            <div class="project__body">
+              <h3 class="project__title">UP WAY (Game)</h3>
+              <ul class="project__bullets">
+                <li><strong>Problem:</strong> Make a fun, fast arcade experience for the web.</li>
+                <li><strong>What I did:</strong> Implemented gameplay, polish, and publishing.</li>
+                <li><strong>Stack:</strong> Web game tech + assets integration.</li>
+                <li><strong>Outcome:</strong> Playable web game with smooth controls.</li>
+              </ul>
+              <div class="project__links">
+                <a class="btn btn-sm" href="https://naved90.itch.io/up-way" target="_blank" rel="noopener">Play</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">Skills / Tech Stack</h2>
+        <div class="stack">
+          <div>
+            <h3 class="h5">Languages</h3>
+            <ul class="pill-list">
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>C#</li>
+              <li>C++</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="h5">Frameworks</h3>
+            <ul class="pill-list">
+              <li>Next.js</li>
+              <li>React</li>
+              <li>Angular</li>
+              <li>ASP.NET Core</li>
+              <li>Node.js</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="h5">Tools</h3>
+            <ul class="pill-list">
+              <li>Supabase</li>
+              <li>SQL Server</li>
+              <li>iTextSharp</li>
+              <li>p5.js</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section__title">About Me</h2>
+        <div class="about">
+          <p>
+            I’m Naved, a developer who enjoys shipping useful software quickly: AI chatbots that answer real questions, web apps that handle real traffic, and visual/interactive projects that delight users. I’ve delivered features across the stack—from Angular and Next.js frontends to ASP.NET Core and SQL Server on the backend.
+          </p>
+          <p>
+            I’m currently open for freelance work. If you need a quick MVP, an integration, or help fixing and polishing an existing product, let’s talk.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="testimonials" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">Testimonials</h2>
+        <p class="section__lead">Add short quotes from collaborators or clients to increase trust.</p>
+        <div class="testimonials-grid">
+          <div class="card quote placeholder">
+            <p>“Naved shipped a solid feature set under a tight deadline and communicated clearly throughout.”</p>
+            <div class="quote__meta">— Client name, Company</div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section__title">Work With Me</h2>
+        <p class="section__lead">Have a project in mind? I usually reply within 24 hours.</p>
+        <div class="contact-cta">
+          <a href="mailto:snaved159@gmail.com" class="btn btn-primary btn-lg">Hire Me</a>
+          <a href="#projects" class="btn btn-ghost btn-lg">See Projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div>© <span id="year"></span> Naved</div>
+      <div class="footer__links">
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js" defer></script>
+</body>
+</html>
